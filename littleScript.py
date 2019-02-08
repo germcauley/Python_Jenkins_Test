@@ -5,15 +5,9 @@ import time
 
 driver = webdriver.Firefox()
 
-
-LOCATOR = "//*[contains(text(), '%s')]"
-
-text = 'About'
-
-driver.get("https://investorrelations.bankofireland.com/")
-el = driver.find_element(By.XPATH, LOCATOR.replace('%s', text))
-item= (el.get_attribute('innerHTML'))
-time.sleep(2)
-print(item)
+driver.get("https://www.google.ie/")
+url = driver.current_url
+print(url)
+assert url == "https://www.google.ie/","Error!! not equal"
 driver.quit()
 
