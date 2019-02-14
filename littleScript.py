@@ -1,13 +1,11 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+caps = DesiredCapabilities.CHROME
+caps['loggingPrefs'] = {'performance': 'ALL'}
+driver = webdriver.Chrome(desired_capabilities=caps)
+driver.get('https://www.bankofireland.com/')
 
-driver = webdriver.Firefox()
+browser_log = driver.get_log('performance')
 
-driver.get("https://www.google.ie/")
-url = driver.current_url
-print(url)
-assert url == "https://www.google.ie/","Error!! not equal"
-driver.quit()
-
+print(browser_log)
